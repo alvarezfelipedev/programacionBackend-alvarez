@@ -1,5 +1,7 @@
-const { clear } = require("console");
 const fs = require("fs");
+const express = require("express");
+const { response } = require("express");
+const app = express();
 
 class Contenedor {
   constructor(nombre) {
@@ -83,15 +85,22 @@ class Contenedor {
   }
 }
 
-const archivo = new Contenedor("productos.txt");
-archivo.save({ title: "auto", price: 10000, thumbnail: "auto.webp" });
-archivo.getById(1).then((response) => {
-  console.log(response);
+let miArchivo = new Contenedor("./productos.txt");
+
+
+app.get("/productos", (req, res) => {
+  miArchivo.getAll().then((response) => {
+    res.end(`todo los productos: ${JSON.stringify(response)}`);
+  });
 });
-archivo.getAll().then((response) => {
-  console.log(response);
+
+app.get("/productosRandom", (req, res) => {
+    let numeroRandom =  parseInt((Math.random() * 3))+1
+    miArchivo.getById(numeroRandom).then(response => {
+        res.end(response)
+    })
 });
-archivo.deleteById(2);
-setTimeout(() => {
-  archivo.deleteAll();
-}, 2000);
+
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => console.log("http://localhost:8080"));

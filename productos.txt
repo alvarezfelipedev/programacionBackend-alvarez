@@ -1,1 +1,20 @@
-[]
+[
+    {
+    "title": "Pure de Tomate",
+    "price": 5,
+    "thumbnail": "tomate.webp",
+    "id": 1
+    },
+    {
+    "title": "Zapallo Anco",
+    "price": 4,
+    "thumbnail": "zapallo-anco.webp",
+    "id": 2
+    },
+    {
+    "title": "Zanahoria",
+    "price": 6,
+    "thumbnail": "zanahoria.webp",
+    "id": 3
+    }
+]
