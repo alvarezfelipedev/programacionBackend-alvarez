@@ -1,0 +1,29 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  padding: 3px;
+}
+.container {
+  background-color: rgb(187, 186, 186);
+  padding: 10px;
+}
+
+.titulo {
+  color: blue;
+}
+
+.mail {
+  font: bold;
+}
+
+#inputMail,
+#inputMensaje {
+  margin: 15px;
+  border-radius: 5%;
+  width: 20%;
+}
+
+#btnEnviar {
+  width: 15%;
+  background-color: rgb(255, 75, 75);
+  padding: 5px;
+}
