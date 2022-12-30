@@ -1,0 +1,64 @@
+body {
+  font-family: monospace;
+  background-color: rgb(206, 206, 206);
+
+}
+
+/* Form de productos */
+
+
+#ingreso {
+  color: blue;
+}
+
+form {
+  font-size: 20px;
+  margin: 10px;
+  width: 20%;
+}
+
+input[type=text],
+input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+}
+
+input[type=submit] {
+  color: white;
+  background-color: green;
+  width: 30%;
+  padding: 14px;
+  margin: 8px;
+}
+
+
+#productos {
+  color: red;
+
+}
+
+/* Productos ingresados */
+
+table {
+  color: white;
+  background-color: rgb(0, 111, 175);
+  width: 70%
+}
+
+table td,
+table th {
+  border: 1px solid black;
+  padding: 8;
+}
+
+table tr {
+  text-align: center;
+}
+
+table th {
+  color: black;
+  text-align: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
