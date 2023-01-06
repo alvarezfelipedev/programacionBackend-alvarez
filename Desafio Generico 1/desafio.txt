@@ -1,0 +1,102 @@
+show databases
+
+1)use empresa
+switched to db empresa
+
+2)db.createCollection("clientes")
+{ ok: 1 }
+
+3)db.clientes.insertOne({nombre: 'Jose', edad: 21})
+{
+  acknowledged: true,
+  insertedId: ObjectId("63b846eeae326cffadecf9f4")
+}
+
+4)db.clientes.insertMany([
+	{nombre: 'Marcos', edad: 22},
+	{nombre: 'Lucas', edad: 23},
+	{nombre: 'Alexis', edad: 24}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63b84719ae326cffadecf9f5"),
+    '1': ObjectId("63b84719ae326cffadecf9f6"),
+    '2': ObjectId("63b84719ae326cffadecf9f7")
+  }
+}
+
+
+5)db.articulos.insertMany([
+	{nombre: 'Papel', precio: 50, stock: 3},
+	{nombre: 'Arroz', precio: 3, stock: 2},
+	{nombre: 'Fideos', precio: 4, stock: 10},
+	{nombre: 'Papa', precio: 55, stock: 4}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63b847b1ae326cffadecf9f8"),
+    '1': ObjectId("63b847b1ae326cffadecf9f9"),
+    '2': ObjectId("63b847b1ae326cffadecf9fa"),
+    '3': ObjectId("63b847b1ae326cffadecf9fb")
+  }
+}
+
+	
+6) show collections
+articulos
+clientes
+
+7) db.clientes.find()
+[
+  {
+    _id: ObjectId("63b846eeae326cffadecf9f4"),
+    nombre: 'Jose',
+    edad: 21
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f5"),
+    nombre: 'Marcos',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f6"),
+    nombre: 'Lucas',
+    edad: 23
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f7"),
+    nombre: 'Alexis',
+    edad: 24
+  }
+]
+
+db.articulos.find()
+[
+  {
+    _id: ObjectId("63b847b1ae326cffadecf9f8"),
+    nombre: 'Papel',
+    precio: 50,
+    stock: 3
+  },
+  {
+    _id: ObjectId("63b847b1ae326cffadecf9f9"),
+    nombre: 'Arroz',
+    precio: 3,
+    stock: 2
+  },
+  {
+    _id: ObjectId("63b847b1ae326cffadecf9fa"),
+    nombre: 'Fideos',
+    precio: 4,
+    stock: 10
+  },
+  {
+    _id: ObjectId("63b847b1ae326cffadecf9fb"),
+    nombre: 'Papa',
+    precio: 55,
+    stock: 4
+  }
+]
+
+9)db.articulos.estimatedDocumentCount()
+4

@@ -1,0 +1,389 @@
+1) empresa> db.clientes.insertMany([
+... {nombre: 'Pablo', edad: 25},
+... {nombre: 'Juan', edad: 22},
+... {nombre: 'Lucia', edad: 25},
+... {nombre: 'Juan', edad: 29},
+... {nombre: 'Fede', edad: 35}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63b8660aae326cffadecf9fc"),
+    '1': ObjectId("63b8660aae326cffadecf9fd"),
+    '2': ObjectId("63b8660aae326cffadecf9fe"),
+    '3': ObjectId("63b8660aae326cffadecf9ff"),
+    '4': ObjectId("63b8660aae326cffadecfa00")
+  }
+}
+
+2)empresa> db.clientes.find().sort({edad:-1})
+[
+  {
+    _id: ObjectId("63b8660aae326cffadecfa00"),
+    nombre: 'Fede',
+    edad: 35
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9ff"),
+    nombre: 'Juan',
+    edad: 29
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fc"),
+    nombre: 'Pablo',
+    edad: 25
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fe"),
+    nombre: 'Lucia',
+    edad: 25
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f7"),
+    nombre: 'Alexis',
+    edad: 24
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f6"),
+    nombre: 'Lucas',
+    edad: 23
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f5"),
+    nombre: 'Marcos',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fd"),
+    nombre: 'Juan',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b846eeae326cffadecf9f4"),
+    nombre: 'Jose',
+    edad: 21
+  }
+]
+
+3)empresa> db.clientes.find().sort({edad:-1}).limit(1)
+[
+  {
+    _id: ObjectId("63b8660aae326cffadecfa00"),
+    nombre: 'Fede',
+    edad: 35
+  }
+]
+
+4)empresa> db.clientes.find().sort({edad:1}).limit(1).skip(1)
+[
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f5"),
+    nombre: 'Marcos',
+    edad: 22
+  }
+]
+
+5)empresa> db.clientes.find({nombre: 'Juan'})
+[
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fd"),
+    nombre: 'Juan',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9ff"),
+    nombre: 'Juan',
+    edad: 29
+  }
+]
+
+6) empresa> db.clientes.find({
+... $and: [
+... {nombre: 'Juan'},
+... {edad: 29}]})
+[
+  {
+    _id: ObjectId("63b8660aae326cffadecf9ff"),
+    nombre: 'Juan',
+    edad: 29
+  }
+]
+
+7)empresa> db.clientes.find({
+... $or: [
+... {nombre: 'Juan'},
+... {nombre: 'Lucia'}]})
+[
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fd"),
+    nombre: 'Juan',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fe"),
+    nombre: 'Lucia',
+    edad: 25
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9ff"),
+    nombre: 'Juan',
+    edad: 29
+  }
+]
+
+8)empresa> db.clientes.find({"edad": {$gt: 25}})
+[
+  {
+    _id: ObjectId("63b8660aae326cffadecf9ff"),
+    nombre: 'Juan',
+    edad: 29
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecfa00"),
+    nombre: 'Fede',
+    edad: 35
+  }
+]
+
+9) empresa> db.clientes.find({ "edad": {$lte: 25}
+... })
+[
+  {
+    _id: ObjectId("63b846eeae326cffadecf9f4"),
+    nombre: 'Jose',
+    edad: 21
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f5"),
+    nombre: 'Marcos',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f6"),
+    nombre: 'Lucas',
+    edad: 23
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f7"),
+    nombre: 'Alexis',
+    edad: 24
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fc"),
+    nombre: 'Pablo',
+    edad: 25
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fd"),
+    nombre: 'Juan',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fe"),
+    nombre: 'Lucia',
+    edad: 25
+  }
+]
+
+10)empresa> db.clientes.find({"edad": {$ne: 25}})
+[
+  {
+    _id: ObjectId("63b846eeae326cffadecf9f4"),
+    nombre: 'Jose',
+    edad: 21
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f5"),
+    nombre: 'Marcos',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f6"),
+    nombre: 'Lucas',
+    edad: 23
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f7"),
+    nombre: 'Alexis',
+    edad: 24
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fd"),
+    nombre: 'Juan',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9ff"),
+    nombre: 'Juan',
+    edad: 29
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecfa00"),
+    nombre: 'Fede',
+    edad: 35
+  }
+]
+
+11)empresa> db.clientes.find({ "edad": {$in:[26, 35]}
+... })
+[
+  {
+    _id: ObjectId("63b8660aae326cffadecfa00"),
+    nombre: 'Fede',
+    edad: 35
+  }
+]
+
+12)empresa> db.clientes.update({'nombre': 'Fede'}, {$set: {edad: 36}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+empresa> db.clientes.find()
+[
+  {
+    _id: ObjectId("63b846eeae326cffadecf9f4"),
+    nombre: 'Jose',
+    edad: 21
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f5"),
+    nombre: 'Marcos',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f6"),
+    nombre: 'Lucas',
+    edad: 23
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f7"),
+    nombre: 'Alexis',
+    edad: 24
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fc"),
+    nombre: 'Pablo',
+    edad: 25
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fd"),
+    nombre: 'Juan',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fe"),
+    nombre: 'Lucia',
+    edad: 25
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9ff"),
+    nombre: 'Juan',
+    edad: 29
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecfa00"),
+    nombre: 'Fede',
+    edad: 36
+  }
+]
+
+13)empresa> db.clientes.updateMany({'edad': 25}, {$set: {edad: 26}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+empresa> db.clientes.find()
+[
+  {
+    _id: ObjectId("63b846eeae326cffadecf9f4"),
+    nombre: 'Jose',
+    edad: 21
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f5"),
+    nombre: 'Marcos',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f6"),
+    nombre: 'Lucas',
+    edad: 23
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f7"),
+    nombre: 'Alexis',
+    edad: 24
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fc"),
+    nombre: 'Pablo',
+    edad: 26
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fd"),
+    nombre: 'Juan',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fe"),
+    nombre: 'Lucia',
+    edad: 26
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9ff"),
+    nombre: 'Juan',
+    edad: 29
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecfa00"),
+    nombre: 'Fede',
+    edad: 36
+  }
+]
+
+14)empresa> db.clientes.deleteMany({nombre: 'Juan'})
+{ acknowledged: true, deletedCount: 2 }
+empresa> db.clientes.find()
+[
+  {
+    _id: ObjectId("63b846eeae326cffadecf9f4"),
+    nombre: 'Jose',
+    edad: 21
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f5"),
+    nombre: 'Marcos',
+    edad: 22
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f6"),
+    nombre: 'Lucas',
+    edad: 23
+  },
+  {
+    _id: ObjectId("63b84719ae326cffadecf9f7"),
+    nombre: 'Alexis',
+    edad: 24
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fc"),
+    nombre: 'Pablo',
+    edad: 26
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecf9fe"),
+    nombre: 'Lucia',
+    edad: 26
+  },
+  {
+    _id: ObjectId("63b8660aae326cffadecfa00"),
+    nombre: 'Fede',
+    edad: 36
+  }
+]
