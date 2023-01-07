@@ -1,0 +1,301 @@
+show databases
+test> use ecommerce
+switched to db ecommerce
+ecommerce> db.createCollection('mensajes')
+{ ok: 1 }
+
+ecommerce> show collections
+mensajes
+ecommerce> db.createCollection('productos')
+{ ok: 1 }
+
+ecommerce> show collections
+mensajes
+productos
+
+1) ecommerce> db.mensajes.insertMany([
+... {fecha: '1/01/2022', mail:'lucas@gmail.com' , msj:'Hola chicos'},
+... {fecha: '1/01/2022', mail: 'jose@outlook.com', msj: 'Hola Lucas, como estas?'},
+... {fecha: '1/01/2022', mail: 'roberto@gmail.com' , msj:'Hola gentee, feliz año'},
+... {fecha: '2/01/2022', mail: 'josefina@hotmail.com.ar' , msj:'Buenass'},
+... {fecha: '2/01/2022', mail: 'josefina@hotmail.com.ar' , msj:'Buen año para todos'},
+... {fecha: '2/01/2022', mail: 'lucas@gmail.com' , msj:'igualmente'},
+... {fecha: '2/01/2022', mail: 'roberto@gmail.com' , msj:'Lo mismo digo'},
+... {fecha: '2/01/2022', mail: 'lucas@gmail.com' , msj:'como la pasaron?'},
+... {fecha: '3/01/2022', mail: 'marcos@gmail.com.ar' , msj:'Recien leo todo, la ese muy bien, ustedes?'},
+... {fecha: '3/01/2022', mail: 'josefina@hotmail.com.ar' , msj:'Todo bien'}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63b895400a0561f782ab6ed1"),
+    '1': ObjectId("63b895400a0561f782ab6ed2"),
+    '2': ObjectId("63b895400a0561f782ab6ed3"),
+    '3': ObjectId("63b895400a0561f782ab6ed4"),
+    '4': ObjectId("63b895400a0561f782ab6ed5"),
+    '5': ObjectId("63b895400a0561f782ab6ed6"),
+    '6': ObjectId("63b895400a0561f782ab6ed7"),
+    '7': ObjectId("63b895400a0561f782ab6ed8"),
+    '8': ObjectId("63b895400a0561f782ab6ed9"),
+    '9': ObjectId("63b895400a0561f782ab6eda")
+  }
+}
+ecommerce> db.productos.insertMany([
+... {product: 'arroz', precio: 105 , url: 'arrozBlanco.com.ar'},
+... {product: 'fideos', precio: 111 , url: 'fideosMatarazzo.com.us'},
+... {product: 'garbanzos', precio: 120 , url: 'garnanzos.com'},
+... {product: 'puré de papa', precio: 580 , url: 'puredepapa.com'},
+... {product: 'zapallo', precio: 900 , url: 'zapallo.com.ar'},
+... {product: 'papas bravas', precio: 1280 , url: 'papasbravas.com.ar'},
+... {product: 'zapallito', precio: 1700 , url: 'zanahoria.com.ch'},
+... {product: 'limon', precio: 2300 , url: 'limon.com'},
+... {product: 'mayonesa', precio: 2860 , url: 'mayonesa.com'},
+... {product: 'milanesas de pollo', precio: 4500 , url: 'milanesasdepollo.com'}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63b8985a0a0561f782ab6edb"),
+    '1': ObjectId("63b8985a0a0561f782ab6edc"),
+    '2': ObjectId("63b8985a0a0561f782ab6edd"),
+    '3': ObjectId("63b8985a0a0561f782ab6ede"),
+    '4': ObjectId("63b8985a0a0561f782ab6edf"),
+    '5': ObjectId("63b8985a0a0561f782ab6ee0"),
+    '6': ObjectId("63b8985a0a0561f782ab6ee1"),
+    '7': ObjectId("63b8985a0a0561f782ab6ee2"),
+    '8': ObjectId("63b8985a0a0561f782ab6ee3"),
+    '9': ObjectId("63b8985a0a0561f782ab6ee4")
+  }
+}
+
+3) ecommerce> db.productos.find()
+[
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6edb"),
+    product: 'arroz',
+    precio: 105,
+    url: 'arrozBlanco.com.ar'
+  },
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6edc"),
+    product: 'fideos',
+    precio: 111,
+    url: 'fideosMatarazzo.com.us'
+  },
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6edd"),
+    product: 'garbanzos',
+    precio: 120,
+    url: 'garnanzos.com'
+  },
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6ede"),
+    product: 'puré de papa',
+    precio: 580,
+    url: 'puredepapa.com'
+  },
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6edf"),
+    product: 'zapallo',
+    precio: 900,
+    url: 'zapallo.com.ar'
+  },
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6ee0"),
+    product: 'papas bravas',
+    precio: 1280,
+    url: 'papasbravas.com.ar'
+  },
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6ee1"),
+    product: 'zapallito',
+    precio: 1700,
+    url: 'zanahoria.com.ch'
+  },
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6ee2"),
+    product: 'limon',
+    precio: 2300,
+    url: 'limon.com'
+  },
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6ee3"),
+    product: 'mayonesa',
+    precio: 2860,
+    url: 'mayonesa.com'
+  },
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6ee4"),
+    product: 'milanesas de pollo',
+    precio: 4500,
+    url: 'milanesasdepollo.com'
+  }
+]
+ecommerce> db.mensajes.find()
+[
+  {
+    _id: ObjectId("63b895400a0561f782ab6ed1"),
+    fecha: '1/01/2022',
+    mail: 'lucas@gmail.com',
+    msj: 'Hola chicos'
+  },
+  {
+    _id: ObjectId("63b895400a0561f782ab6ed2"),
+    fecha: '1/01/2022',
+    mail: 'jose@outlook.com',
+    msj: 'Hola Lucas, como estas?'
+  },
+  {
+    _id: ObjectId("63b895400a0561f782ab6ed3"),
+    fecha: '1/01/2022',
+    mail: 'roberto@gmail.com',
+    msj: 'Hola gentee, feliz año'
+  },
+  {
+    _id: ObjectId("63b895400a0561f782ab6ed4"),
+    fecha: '2/01/2022',
+    mail: 'josefina@hotmail.com.ar',
+    msj: 'Buenass'
+  },
+  {
+    _id: ObjectId("63b895400a0561f782ab6ed5"),
+    fecha: '2/01/2022',
+    mail: 'josefina@hotmail.com.ar',
+    msj: 'Buen año para todos'
+  },
+  {
+    _id: ObjectId("63b895400a0561f782ab6ed6"),
+    fecha: '2/01/2022',
+    mail: 'lucas@gmail.com',
+    msj: 'igualmente'
+  },
+  {
+    _id: ObjectId("63b895400a0561f782ab6ed7"),
+    fecha: '2/01/2022',
+    mail: 'roberto@gmail.com',
+    msj: 'Lo mismo digo'
+  },
+  {
+    _id: ObjectId("63b895400a0561f782ab6ed8"),
+    fecha: '2/01/2022',
+    mail: 'lucas@gmail.com',
+    msj: 'como la pasaron?'
+  },
+  {
+    _id: ObjectId("63b895400a0561f782ab6ed9"),
+    fecha: '3/01/2022',
+    mail: 'marcos@gmail.com.ar',
+    msj: 'Recien leo todo, la ese muy bien, ustedes?'
+  },
+  {
+    _id: ObjectId("63b895400a0561f782ab6eda"),
+    fecha: '3/01/2022',
+    mail: 'josefina@hotmail.com.ar',
+    msj: 'Todo bien'
+  }
+]
+
+4)db.mensajes.estimatedDocumentCount()
+10
+db.productos.estimatedDocumentCount()
+10
+
+5)a) 
+ecommerce> db.productos.insertOne({product: 'berenjena', precio: 4700 , url: 'berenjena.com.ar'})
+{ },
+  acknowledged: true,
+  insertedId: ObjectId("63b8b98f0a0561f782ab6ee5")
+}
+
+ b) i) 
+ecommerce> db.productos.find({precio: {$lt: 1000}})
+[   
+  {,
+    _id: ObjectId("63b8985a0a0561f782ab6edb"),
+    product: 'arroz',b895400a0561f782ab6ed6"),
+    precio: 105,/2022',
+    url: 'arrozBlanco.com.ar'
+  }
+  {,
+    _id: ObjectId("63b8985a0a0561f782ab6edc"),
+    product: 'fideos',895400a0561f782ab6ed7"),
+    precio: 111,/2022',
+    url: 'fideosMatarazzo.com.us'
+  }
+  {,
+    _id: ObjectId("63b8985a0a0561f782ab6edd"),
+    product: 'garbanzos',400a0561f782ab6ed8"),
+    precio: 120,/2022',
+    url: 'garnanzos.com'om',
+  }
+  {,
+    _id: ObjectId("63b8985a0a0561f782ab6ede"),
+    product: 'puré de papa',a0561f782ab6ed9"),
+    precio: 580,/2022',
+    url: 'puredepapa.com'om.ar',
+  }
+  {,
+    _id: ObjectId("63b8985a0a0561f782ab6edf"),
+    product: 'zapallo',95400a0561f782ab6eda"),
+    precio: 900,/2022',
+    url: 'zapallo.com.ar'il.com.ar',
+  }
+] }
+
+b) ii)
+
+b) iii)
+ecommerce> db.productos.find({'precio': {$gt: 3000} })
+[
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6ee4"),
+    product: 'milanesas de pollo',
+    precio: 4500,
+    url: 'milanesasdepollo.com'
+  },
+  {
+    _id: ObjectId("63b8b98f0a0561f782ab6ee5"),
+    product: 'berenjena',
+    precio: 4700,
+    url: 'berenjena.com.ar'
+  }
+]
+
+b) iv)
+ecommerce> db.productos.find().sort({precio: 1}).skip(2).limit(1)
+[
+  {
+    _id: ObjectId("63b8985a0a0561f782ab6edd"),
+    product: 'garbanzos',
+    precio: 120,
+    url: 'garnanzos.com'
+  }
+]
+
+c)
+ecommerce> db.productos.updateMany({'precio': {$gte: 100 }}, {$set: {'stock': 100}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 11,
+  modifiedCount: 11,
+  upsertedCount: 0
+}
+
+d) 
+ecommerce> db.productos.updateMany ({ precio: {$gt: 4000}}, {$set: {'stock': 0}})
+{   product: 'mayonesa',
+  acknowledged: true,
+  insertedId: null,com',
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+
+e) 
+ecommerce> db.productos.deleteMany({precio: {$lt: 1000}})
+{ acknowledged: true, deletedCount: 5 }
+
+6)
+ecommerce> db.createUser( { "user": "pepe", "pwd": "asd456", "roles": [ { "role": "read", "db": "ecommerce"} ] } )
+{ ok: 1 }
+
+
